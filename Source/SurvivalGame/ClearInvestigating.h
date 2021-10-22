@@ -12,6 +12,7 @@
 UCLASS()
 class SURVIVALGAME_API UClearInvestigating : public UBTTaskNode
 {
+	// AI IGNORE NOISE'S TASK
 	GENERATED_BODY()
 		EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	

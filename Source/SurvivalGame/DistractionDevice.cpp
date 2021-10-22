@@ -34,6 +34,7 @@ void ADistractionDevice::Tick(float DeltaTime)
 
 void ADistractionDevice::Interact_Implementation()
 {
+	// When player interaction pushing button E , make noise , to trigger AI's auditory sense
 	UAISense_Hearing::ReportNoiseEvent(GetWorld(), GetActorLocation(), 1.0f, this, 0.0f, "Noise");
 	if (NoiseSound)
 	{
