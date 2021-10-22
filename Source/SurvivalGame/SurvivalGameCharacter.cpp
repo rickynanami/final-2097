@@ -131,7 +131,7 @@ void ASurvivalGameCharacter::BeginPlay()
 
 	KeyCount = 0;
 
-	//获取Tag为Post的后期处理盒子
+	//Get the post-processing box with Tag as Post
 	TArray<AActor*> Actors;
 	UGameplayStatics::GetAllActorsWithTag(this, FName("Post"), Actors);
 	if (Actors.Num() > 0)
@@ -446,6 +446,7 @@ void ASurvivalGameCharacter::MinusHealth()
 	float TempHealth = CurrentHealth - MinusHealthValue;
 	CurrentHealth = FMath::Clamp<float>(TempHealth, 0, MaxHealth);
 
+	//If health is lower than 20 , post activity
 	if (CurrentHealth < 20)
 	{
 		if (ppv)
@@ -484,6 +485,7 @@ void ASurvivalGameCharacter::DecreaseStunGrenade()
 	StunGrenadeCount++;
 }
 
+//Generate Grenade
 void ASurvivalGameCharacter::OnStunGrenade()
 {
 	// try and fire a projectile

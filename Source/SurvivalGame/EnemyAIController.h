@@ -56,17 +56,19 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = Blackboard)
 		UBehaviorTree* BehaviorTree;
 
-
+	//Declare visual components
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = AI)
 		UAISenseConfig_Hearing* HearingConfiguration;
 
+	//The delegate function of the auditory function
 	UFUNCTION()
 		void OnHearNoise(TArray<AActor*> const& updated_actors);
 
+	//Eliminate noise-producing locations
 	void ClearNosie();
 
 
-	//敌人被地雷炸到，原地停止运动
+	//Attack by grenade , stop action
 	void BeginStun();
 	FTimerHandle TimeHnadle_StunTime;
 	void Stoptun();

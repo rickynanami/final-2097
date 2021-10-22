@@ -198,7 +198,7 @@ public:
 		float MinusHealthValue = 2.0f;
 	void IncreaseHealth(float HealthValue);
 
-	//
+	//StunGrenade related variables & functions
 	UPROPERTY(BlueprintReadWrite,Category = "Attributes")
 	int32 StunGrenadeCount;
 
@@ -208,7 +208,7 @@ public:
 	void DecreaseStunGrenade();
 	void OnStunGrenade();
 
-	
+	//Post-component
 	APostProcessVolume* ppv;
 
 	UFUNCTION(BlueprintCallable)

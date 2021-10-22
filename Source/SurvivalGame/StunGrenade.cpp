@@ -59,7 +59,8 @@ void AStunGrenade::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent
 	{
 		AEnemyCharacter* OverlapEnemy = Cast<AEnemyCharacter>(OtherActor);
 		if (OverlapEnemy)
-		{
+		{   
+			//Trigger the Stun function in AIController;
 			AEnemyAIController* TempAIController = Cast<AEnemyAIController>(OverlapEnemy->GetController());
 			TempAIController->BeginStun();
 		}

@@ -23,6 +23,7 @@ AEnemyAIController::AEnemyAIController()
 	//GetPerceptionComponent()->OnPerceptionUpdated.AddDynamic(this, &AEnemyAIController::OnPawnDetected);
 	GetPerceptionComponent()->OnTargetPerceptionUpdated.AddDynamic(this, &AEnemyAIController::OnsensesUpdate);
 
+	//Auditory component initialization
 	HearingConfiguration = CreateDefaultSubobject<UAISenseConfig_Hearing>(TEXT("Hearing Configuration"));
 
 	HearingConfiguration->HearingRange = 3000;
@@ -134,6 +135,7 @@ void AEnemyAIController::OnsensesUpdate(AActor* Updatedactor, FAIStimulus Stimul
 
 void AEnemyAIController::OnHearNoise(TArray<AActor*> const& updated_actors)
 {
+	//Traverse the heard Actors, find the position of the object whose Tag is "Noise", and set the variables in the blackboard
 	for (size_t x = 0; x < updated_actors.Num(); ++x)
 	{
 		FActorPerceptionBlueprintInfo info;
@@ -159,6 +161,7 @@ void AEnemyAIController::ClearNosie()
 	BlackboardComponent->SetValueAsBool("IsInvestigating", false);
 }
 
+//AI stop activity
 void AEnemyAIController::BeginStun()
 {
 	BlackboardComponent->SetValueAsBool("IsStun", true);
@@ -170,6 +173,7 @@ void AEnemyAIController::Stoptun()
 	BlackboardComponent->SetValueAsBool("IsStun", false);
 }
 
+//AI reactivity
 void AEnemyAIController::GenerateNewRandomLocation()
 {
 	if (NavigationSystem)
